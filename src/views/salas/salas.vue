@@ -20,13 +20,13 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class="text-white text-3xl font-bold underline z-10">Salas</h1>
+    <h1 class="text-3xl font-bold underline z-10">Salas</h1>
 
     <div class="salas">
       <router-link v-for="sala in salas" :to="'salas/' + sala.id" class="salas">
         <sala
           :nombre="sala.nombre"
-          :aforo="sala.afor"
+          :aforo="sala.aforo"
           :minimo="sala.minimo"
         ></sala
       ></router-link>

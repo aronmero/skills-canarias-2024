@@ -24,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class="text-white text-3xl font-bold underline z-10">Reservas</h1>
+    <h1 class=" text-3xl font-bold underline z-10">Reservas</h1>
 
     <div class="salas">
       <router-link v-for="sala in salas" :to="'reservas/' + sala.id" class="salas">
