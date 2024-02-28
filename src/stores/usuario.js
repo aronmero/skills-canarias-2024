@@ -15,8 +15,7 @@ export const useUsuarioStore = defineStore("usuario", () => {
   function login(userData) {
     const datosUsuario = {
       id: userData.id,
-      email: userData.email,
-      nombre: userData.nombre,
+      token: userData.token,
     };
     this.isActivo = true;
     this.data = datosUsuario;

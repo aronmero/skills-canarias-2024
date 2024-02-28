@@ -1,4 +1,5 @@
 <script setup>
+
 import { ref, onMounted, computed } from "vue";
 import sala from "@/components/sala.vue";
 import { useRouter } from "vue-router";
@@ -23,6 +24,8 @@ onMounted(async () => {
     })
     .catch((err) => console.error(err));
 });
+import { redirectLogin } from "@/utils/utils";
+redirectLogin();
 </script>
 
 <template>

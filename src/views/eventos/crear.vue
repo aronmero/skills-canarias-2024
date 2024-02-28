@@ -1,10 +1,12 @@
 <script setup>
+import { useUsuarioStore } from "@/stores/usuario";
 import { ref, onMounted, computed } from "vue";
 
 import evento from "@/components/evento.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const salaId = ref("");
+const store = useUsuarioStore();
 
 const { id } = router.currentRoute.value.params;
 salaId.value = id;
@@ -28,6 +30,8 @@ onMounted(async () => {
     })
     .catch((err) => console.error(err));
 });
+import { redirectLogin } from "@/utils/utils";
+redirectLogin();
 </script>
 
 <template>
