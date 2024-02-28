@@ -21,7 +21,7 @@ class apiEventosController extends Controller
         $this->middleware('can:admin.eventos.index')->only('index');
         $this->middleware('can:admin.eventos.store')->only('store');
         $this->middleware('can:admin.eventos.destroy')->only('destroy');
-        $this->middleware('can:admin.eventos.show')->only('show','showUser');
+        $this->middleware('can:admin.eventos.show')->only('show', 'showUser');
         $this->middleware('can:admin.eventos.update')->only('update');
     }
     /**
@@ -37,7 +37,7 @@ class apiEventosController extends Controller
     {
         try {
             $reserva = evento::with(['usuario'])->where('usuario_id', $id)->get();
-            if(count($reserva)>0){
+            if (count($reserva) > 0) {
                 return $this->respuestaHTTP($reserva, 200, true);
             }
             return $this->respuestaHTTP('Evento no encontrados', 404, false);
@@ -53,7 +53,7 @@ class apiEventosController extends Controller
     {
         $evento = evento::create($request->all());
 
-        return parent::respuestaHTTP("Evento creado satisfactoriamente. ID: " . $evento->id, 201, true);
+        return parent::respuestaHTTP($evento->id, 201, true);
     }
 
     /**

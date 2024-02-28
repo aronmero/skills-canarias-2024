@@ -48,7 +48,7 @@ class apiReservasController extends Controller
 
         $reserva = reserva::create($request->all());
 
-        return parent::respuestaHTTP("Reserva creada satisfactoriamente. ID: " . $reserva->id, 201, true);
+        return parent::respuestaHTTP($reserva->id, 201, true);
     }
 
     /**

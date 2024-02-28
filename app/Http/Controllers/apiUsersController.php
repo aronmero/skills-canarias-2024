@@ -26,7 +26,7 @@ class apiUsersController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'),)
         ])->assignRole('Usuario');
-        return  parent::respuestaHTTP("Usuario creado satisfactoriamente.ID: ". $user->id, 201, true);
+        return  parent::respuestaHTTP($user->id, 201, true);
     }
 
     /**
