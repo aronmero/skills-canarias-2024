@@ -22,7 +22,7 @@ function submitFormulario() {
 </script>
 
 <template>
-  <div>
+  <div class="form">
     <h2 class="text-white text-center">{{ titulo }}</h2>
     <form method="post" @submit.prevent="submitFormulario">
       <div>
@@ -49,6 +49,15 @@ function submitFormulario() {
   </div>
 </template>
 <style scoped>
+.form{
+  background-color: #8b9baa;
+  width: fit-content;
+  border-radius: 15px;
+  padding: 30px 40px;
+}
+h2{
+  font-size: 32px;
+}
 .error-message {
   color: red;
   margin-top: 10px;
@@ -79,7 +88,7 @@ form {
     width: 320px;
     border-radius: 12px;
     font-size: 15px;
-    border: 1px solid #CFBF9E;
+    border: 1px solid #ffff;
   }
 
   div:has(input[type="submit"]) {
@@ -88,9 +97,10 @@ form {
     input {
       font-weight: 600;
       border-radius: 20px;
-      background-color: #CEA647;
+      background-color: #ffff;
       cursor: pointer;
-      border-color: #CEA647;
+      border-color: #ffff;
+
     }
   }
 }

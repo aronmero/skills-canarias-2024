@@ -26,7 +26,7 @@ const tryAuthUser = async (userData) => {
           nombre: usuarioEncontrado.nombre,
         };
 
-        store.login(userData)
+        store.login(userData);
         errorMsg.value = "";
         router.push("/home");
       } else {
@@ -39,5 +39,20 @@ const tryAuthUser = async (userData) => {
 };
 </script>
 <template>
-  <AuthUsuario titulo="Iniciar sesion" @submit="tryAuthUser" :error="errorMsg" />
+  <div class="login">
+    <AuthUsuario
+      titulo="Iniciar sesion"
+      @submit="tryAuthUser"
+      :error="errorMsg"
+    />
+  </div>
 </template>
+<style scoped>
+.login {
+  display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+</style>

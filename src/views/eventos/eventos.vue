@@ -6,7 +6,7 @@ const options = {
   headers: {
     "User-Agent": "insomnia/8.6.0",
     Accept: "application/json",
-    Authorization: "Bearer 1|GRe8DKdTmf1CPIvC0NU0uNAzJVCfcnYUXuQD18oP08835d5e",
+    Authorization: "Bearer 1|Bt2AouOvyB43T4NGpgsIzkvhgpjkhViFcEPB1iTjae618fd1",
   },
 };
 
@@ -25,7 +25,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-col items-center">
     <h1 class=" text-3xl font-bold underline z-10">Eventos</h1>
-    <div>Crear evento</div>
+    <!--<div>Crear evento</div>-->
     <div class="salas">
       <router-link
         v-for="sala in salas"

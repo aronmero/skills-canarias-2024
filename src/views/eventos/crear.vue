@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
+
 import evento from "@/components/evento.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -13,7 +14,7 @@ const options = {
   headers: {
     "User-Agent": "insomnia/8.6.0",
     Accept: "application/json",
-    Authorization: "Bearer 1|GRe8DKdTmf1CPIvC0NU0uNAzJVCfcnYUXuQD18oP08835d5e",
+    Authorization: "Bearer 1|Bt2AouOvyB43T4NGpgsIzkvhgpjkhViFcEPB1iTjae618fd1",
   },
 };
 

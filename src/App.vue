@@ -1,16 +1,9 @@
 <script setup>
 import { RouterView } from "vue-router";
+import Header from "@/components/header.vue";
 </script>
 
 <template>
-  <header>
-    <div class="enlaces fixed top-0 ">
-      <router-link to="/salas" class="link">salas </router-link>
-      <router-link to="/reservas" class="link">reservas </router-link>
-      <router-link to="/eventos" class="link">eventos </router-link>
-    </div>
-  </header>
+  <template v-if="$route.path != '/'"> <Header></Header></template>
   <RouterView></RouterView>
 </template>
-
-<style scoped></style>
