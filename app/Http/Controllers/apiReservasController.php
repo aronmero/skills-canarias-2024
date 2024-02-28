@@ -28,6 +28,12 @@ class apiReservasController extends Controller
         return $this->respuestaHTTP($reserva, 200, true);
     }
 
+    public function findReserva($id)
+    {
+        $reserva = reserva::with(['evento', 'sala'])->where('eventos_id', $id)->get();
+        return $this->respuestaHTTP($reserva, 200, true);
+    }
+
     public function showUser(string $id)
     {
         try {
