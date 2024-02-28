@@ -25,7 +25,6 @@ onMounted(async () => {
     .then((response) => response.json())
     .then((response) => {
       salaData.value = response.message;
-      console.log(salaData.value);
     })
     .catch((err) => console.error(err));
 });

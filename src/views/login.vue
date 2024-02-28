@@ -23,8 +23,6 @@ const tryAuthUser = async (userData) => {
       const response = await fetch("http://127.0.0.1:8000/api/login", options);
       const data = await response.json();
 
-      console.log(data);
-
       if (data.status) {
         const userData = {
           id: data.message.id,

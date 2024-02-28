@@ -2,7 +2,7 @@
 import { useUsuarioStore } from "@/stores/usuario";
 import { ref, onMounted, computed } from "vue";
 
-import crear from "@/components/crear/crearReserva.vue";
+import crear from "@/components/crear/crearEvento.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const store = useUsuarioStore();
@@ -29,7 +29,6 @@ const tryCreateEvent = async (userData) => {
       );
       const data = await response.json();
 
-      console.log(data);
 
       if (data.status) {
         errorMsg.value = "";
