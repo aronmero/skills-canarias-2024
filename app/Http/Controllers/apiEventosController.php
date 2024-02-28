@@ -21,7 +21,7 @@ class apiEventosController extends Controller
         $this->middleware('can:admin.eventos.index')->only('index');
         $this->middleware('can:admin.eventos.store')->only('store');
         $this->middleware('can:admin.eventos.destroy')->only('destroy');
-        $this->middleware('can:admin.eventos.show')->only('show');
+        $this->middleware('can:admin.eventos.show')->only('show','showUser');
         $this->middleware('can:admin.eventos.update')->only('update');
     }
     /**
@@ -31,6 +31,19 @@ class apiEventosController extends Controller
     {
         $usuarios = evento::with('usuario')->get();
         return $this->respuestaHTTP($usuarios, 200, true);
+    }
+
+    public function showUser(string $id)
+    {
+        try {
+            $reserva = evento::with(['usuario'])->where('usuario_id', $id)->get();
+            if(count($reserva)>0){
+                return $this->respuestaHTTP($reserva, 200, true);
+            }
+            return $this->respuestaHTTP('Evento no encontrados', 404, false);
+        } catch (ModelNotFoundException $exception) {
+            return $this->respuestaHTTP('Evento no encontrados', 404, false);
+        }
     }
 
     /**

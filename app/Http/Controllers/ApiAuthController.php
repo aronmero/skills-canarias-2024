@@ -19,7 +19,8 @@ class ApiAuthController extends Controller
             $token = $user->createToken('my-app-token')->plainTextToken;
 
             $response = [
-                'token' => $token
+                'token' => $token,
+                'id'=> $user->id
             ];
             return parent::respuestaHTTP($response, 201, true);
         } else {
