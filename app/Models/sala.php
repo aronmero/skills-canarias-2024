@@ -18,4 +18,9 @@ class sala extends Model
     {
         return $this->belongsToMany(evento::class, 'reservas', 'eventos_id', 'salas_id');
     }
+    public function imagenes()
+    {
+        return $this->hasMany(imagen::class, 'salas_id', 'id');
+    }
+
 }

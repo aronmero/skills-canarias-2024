@@ -14,8 +14,8 @@ class apiSalasController extends Controller
      */
     public function index()
     {
-        $sala = sala::all();
-        return $this->respuestaHTTP($sala, 200, true);
+        $salas = sala::with(['imagenes'])->get();
+        return $this->respuestaHTTP($salas, 200, true);
     }
 
     /**
