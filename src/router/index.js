@@ -10,23 +10,23 @@ const routes = [
   },
   {
     path: "/salas",
-    component: () => import("@/views/salas.vue"),
+    component: () => import("@/views/salas/salas.vue"),
   },
   {
     path: "/salas/:id",
-    component: () => import("@/views/sala.vue"),
+    component: () => import("@/views/salas/sala.vue"),
   },
-  { path: "/eventos", component: () => import("@/views/eventos.vue") },
+  { path: "/eventos", component: () => import("@/views/eventos/eventos.vue") },
   {
     path: "/eventos/:id",
-    component: () => import("@/views/evento.vue"),
+    component: () => import("@/views/eventos/evento.vue"),
   },
   {
     path: "/reservas",
-    component: () => import("@/views/reservas.vue"),
+    component: () => import("@/views/reservas/reservas.vue"),
   },{
     path: "/reservas/:id",
-    component: () => import("@/views/reserva.vue"),
+    component: () => import("@/views/reservas/reserva.vue"),
   },
 ];
 

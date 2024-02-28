@@ -2,12 +2,12 @@
 import { ref, onMounted, computed } from "vue";
 import evento from "@/components/evento.vue";
 const options = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    'User-Agent': 'insomnia/8.6.0',
-    Accept: 'application/json',
-    Authorization: 'Bearer 1|GRe8DKdTmf1CPIvC0NU0uNAzJVCfcnYUXuQD18oP08835d5e'
-  }
+    "User-Agent": "insomnia/8.6.0",
+    Accept: "application/json",
+    Authorization: "Bearer 1|GRe8DKdTmf1CPIvC0NU0uNAzJVCfcnYUXuQD18oP08835d5e",
+  },
 };
 
 const salas = ref([]);
@@ -25,9 +25,13 @@ onMounted(async () => {
 <template>
   <div class="flex flex-col items-center">
     <h1 class="text-white text-3xl font-bold underline z-10">Eventos</h1>
-
+    <div>Crear evento</div>
     <div class="salas">
-      <router-link v-for="sala in salas" :to="'eventos/' + sala.id" class="salas">
+      <router-link
+        v-for="sala in salas"
+        :to="'eventos/' + sala.id"
+        class="salas"
+      >
         <evento
           :nombre="sala.nombre"
           :comensales="sala.comensales"
