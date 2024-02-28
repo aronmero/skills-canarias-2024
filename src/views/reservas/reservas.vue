@@ -32,7 +32,7 @@ redirectLogin();
 <template>
   <div class="flex flex-col items-center">
     <h1 class="text-3xl font-bold underline z-10">Reservas</h1>
-
+   
     <div class="salas">
       <template v-if="salas.length > 0">
         <router-link v-for="sala in salas" :to="'reservas/' + sala.id" class="salas">

@@ -2,14 +2,14 @@
 import { useUsuarioStore } from "@/stores/usuario";
 import { ref, onMounted, computed } from "vue";
 
-import crear from "@/components/crear/crearEvento.vue";
+import crear from "@/components/crear/crearReserva.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const store = useUsuarioStore();
 
 const errorMsg = ref(null);
 const tryCreateEvent = async (userData) => {
-  if (userData.nombre && userData.comensales && userData.fecha) {
+  if (userData.eventos_id && userData.salas_id && userData.fecha) {
     try {
       const options = {
         method: "POST",
@@ -19,7 +19,7 @@ const tryCreateEvent = async (userData) => {
           Accept: "application/json",
           Authorization: "Bearer " + store.data.token,
         },
-        body: `{"nombre":"${userData.nombre}","comensales":"${userData.comensales}",
+        body: `{"eventos_id":"${userData.eventos_id}","salas_id":"${userData.salas_id}",
         "fecha":"${userData.fecha}","usuario_id":${store.data.id}}`,
       };
 
