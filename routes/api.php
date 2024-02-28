@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\apiEventosController;
+use App\Http\Controllers\apiReservasController;
 use App\Http\Controllers\apiSalasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,11 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
 
 Route::apiResource('salas', apiSalasController::class)->parameters(['salas' => 'sala'])->except(['update', 'store', 'destroy']);
 Route::apiResource('eventos', apiEventosController::class)->parameters(['eventos' => 'evento']);
+Route::apiResource('reservas', apiReservasController::class)->parameters(['reservas' => 'reserva']);

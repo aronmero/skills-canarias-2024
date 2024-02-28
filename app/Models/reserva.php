@@ -13,4 +13,14 @@ class reserva extends Model
         'salas_id',
         'fecha'
     ];
+
+    public function sala()
+    {
+        return $this->belongsTo(sala::class, 'salas_id');
+    }
+    public function evento()
+    {
+        return $this->belongsTo(evento::class, 'eventos_id');
+    }
+
 }

@@ -23,7 +23,7 @@ class eventoUpdateRequest extends FormRequest
     {
         return [
             'nombre' => 'string|min:3',
-            'comensales' => 'integer|max:3|max:120',
+            'comensales' => 'max:3|max:120',
             'fecha' => 'date|after:yesterday',
         ];
     }

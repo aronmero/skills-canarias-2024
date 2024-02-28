@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\eventoRequest;
 use App\Http\Requests\eventoUpdateRequest;
+use App\Http\Requests\reservaRequest;
+use App\Http\Requests\reservaUpdateRequest;
 use App\Models\evento;
 use App\Models\reserva;
 use App\Models\User;
@@ -54,7 +56,8 @@ class apiEventosController extends Controller
         if (!$evento) {
             return parent::respuestaHTTP("Evento no encontrado.", 404);
         }
-        if (now() < $evento->fecha) {
+
+        if (now() >= $evento->fecha) {
             return parent::respuestaHTTP("Evento ya ocurrio", 200, true);
         }
         if ($evento->date !== $request->fecha) {

@@ -23,7 +23,7 @@ class eventoRequest extends FormRequest
     {
         return [
             'nombre' => 'required|string|min:3',
-            'comensales' => 'required|integer|max:3|max:120',
+            'comensales' => 'required|max:3|max:120',
             'usuario_id' => 'required|exists:users,id',
             'fecha' => 'required|date|after:yesterday',
         ];
