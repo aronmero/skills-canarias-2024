@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class apiReservasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('can:admin.reservas.index')->only('index');
+        $this->middleware('can:admin.reservas.store')->only('store');
+        $this->middleware('can:admin.reservas.destroy')->only('destroy');
+        $this->middleware('can:admin.reservas.show')->only('show');
+        $this->middleware('can:admin.reservas.update')->only('update');
+    }
     /**
      * Display a listing of the resource.
      */

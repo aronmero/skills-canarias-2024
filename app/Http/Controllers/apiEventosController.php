@@ -14,6 +14,16 @@ use Illuminate\Http\Request;
 
 class apiEventosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('can:admin.eventos.index')->only('index');
+        $this->middleware('can:admin.eventos.store')->only('store');
+        $this->middleware('can:admin.eventos.destroy')->only('destroy');
+        $this->middleware('can:admin.eventos.show')->only('show');
+        $this->middleware('can:admin.eventos.update')->only('update');
+    }
     /**
      * Display a listing of the resource.
      */
