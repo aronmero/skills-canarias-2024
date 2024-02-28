@@ -10,6 +10,7 @@ const store = useUsuarioStore();
       <router-link v-if="store.isActivo" to="/reservas" class="link">Reservas </router-link>
       <router-link v-if="store.isActivo" to="/eventos" class="link">Eventos </router-link>
       <router-link v-if="!store.isActivo" to="/login" class="link">Iniciar sesion </router-link>
+      <router-link v-if="!store.isActivo" to="/registro" class="link">Registro</router-link>
     </div>
   </header>
 </template>

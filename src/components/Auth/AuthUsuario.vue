@@ -6,15 +6,21 @@ defineProps({
   descripcion: String,
   grupos: Array,
   profesores: Array,
-  error: String,
+  error: String
 });
 
 const email = ref("");
 const password = ref("");
-
+const nombre = ref("");
 function submitFormulario() {
   if (email.value && password.value) {
-    emit("submit", { email: email.value, password: password.value });
+
+      emit("submit", {
+        nombre: nombre.value,
+        email: email.value,
+        password: password.value,
+      });
+
   } else {
     console.warn("Invalido");
   }
@@ -25,6 +31,15 @@ function submitFormulario() {
   <div class="form">
     <h2 class="text-white text-center">{{ titulo }}</h2>
     <form method="post" @submit.prevent="submitFormulario">
+      <div v-if="$route.path == '/registro'">
+        <label class="text-white">Nombre</label>
+        <input
+          type="nombre"
+          name="nombre"
+          placeholder="Tu nombre"
+          v-model="nombre"
+        />
+      </div>
       <div>
         <label class="text-white">Email</label>
         <input
@@ -43,19 +58,20 @@ function submitFormulario() {
           v-model="password"
         />
       </div>
+
       <div><input type="submit" /></div>
     </form>
     <div v-if="error" class="error-message">{{ error }}</div>
   </div>
 </template>
 <style scoped>
-.form{
+.form {
   background-color: #8b9baa;
   width: fit-content;
   border-radius: 15px;
   padding: 30px 40px;
 }
-h2{
+h2 {
   font-size: 32px;
 }
 .error-message {
@@ -100,7 +116,6 @@ form {
       background-color: #ffff;
       cursor: pointer;
       border-color: #ffff;
-
     }
   }
 }

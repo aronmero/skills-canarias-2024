@@ -4,6 +4,6 @@ import Header from "@/components/header.vue";
 </script>
 
 <template>
-  <template v-if="$route.path != '/login'"> <Header></Header></template>
+ <Header></Header>
   <RouterView></RouterView>
 </template>

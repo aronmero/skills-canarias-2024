@@ -16,7 +16,7 @@ const options = {
   headers: {
     "User-Agent": "insomnia/8.6.0",
     Accept: "application/json",
-    Authorization: "Bearer 1|Bt2AouOvyB43T4NGpgsIzkvhgpjkhViFcEPB1iTjae618fd1",
+    Authorization: "Bearer "+store.data.token,
   },
 };
 
@@ -26,7 +26,6 @@ onMounted(async () => {
     .then((response) => response.json())
     .then((response) => {
       salaData.value = response.message;
-      console.log(salaData.value);
     })
     .catch((err) => console.error(err));
 });
