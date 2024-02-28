@@ -1,18 +1,25 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import sala from "@/components/sala.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const salaId = ref("");
+
+const { id } = router.currentRoute.value.params;
+salaId.value = id;
+
 const options = {
   method: "GET",
   headers: { "User-Agent": "insomnia/8.6.0", Accept: "application/json" },
 };
 
-const salas = ref([]);
+const salaData = ref([]);
 onMounted(async () => {
-  fetch("http://127.0.0.1:8000/api/salas/", options)
+  fetch(`http://127.0.0.1:8000/api/salas/${salaId.value}`, options)
     .then((response) => response.json())
     .then((response) => {
-      salas.value = response.message;
-      console.log(salas.value);
+      salaData.value = response.message;
+      console.log(salaData.value);
     })
     .catch((err) => console.error(err));
 });
@@ -20,16 +27,14 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class="text-white text-3xl font-bold underline z-10">Salas</h1>
+    <h1 class="text-white text-3xl font-bold underline z-10">Sala</h1>
 
     <div class="salas">
-      <router-link v-for="sala in salas" :to="'salas/' + sala.id" class="salas">
-        <sala
-          :nombre="sala.nombre"
-          :aforo="sala.afor"
-          :minimo="sala.minimo"
-        ></sala
-      ></router-link>
+      <sala
+        :nombre="salaData.nombre"
+        :aforo="salaData.afor"
+        :minimo="salaData.minimo"
+      ></sala>
     </div>
   </div>
 </template>

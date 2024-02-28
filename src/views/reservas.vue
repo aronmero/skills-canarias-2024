@@ -1,31 +1,48 @@
 <script setup>
-import Carrusel from "@/components/carrusel.vue";
+import { ref, onMounted, computed } from "vue";
+import evento from "@/components/reserva.vue";
+const options = {
+  method: 'GET',
+  headers: {
+    'User-Agent': 'insomnia/8.6.0',
+    Accept: 'application/json',
+    Authorization: 'Bearer 1|GRe8DKdTmf1CPIvC0NU0uNAzJVCfcnYUXuQD18oP08835d5e'
+  }
+};
+
+const salas = ref([]);
+onMounted(async () => {
+  fetch("http://127.0.0.1:8000/api/reservas/", options)
+    .then((response) => response.json())
+    .then((response) => {
+      salas.value = response.message;
+      console.log(salas.value);
+    })
+    .catch((err) => console.error(err));
+});
 </script>
 
 <template>
   <div class="flex flex-col items-center">
-    <h1
-      class="text-white fixed top-0 right-[20px] text-3xl font-bold underline z-10"
-    >
-      Hello world!
-    </h1>
+    <h1 class="text-white text-3xl font-bold underline z-10">Reservas</h1>
 
-    <!-- Before -->
-    <div class="flex gap-10 mb-10 mt-10">
-      <button
-        class="text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800"
-      >
-        ...
-      </button>
-
-      <!-- After -->
-      <button
-        class="text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800"
-      >
-        ...
-      </button>
+    <div class="salas">
+      <router-link v-for="sala in salas" :to="'reservas/' + sala.id" class="salas">
+        <evento
+          :evento="sala.evento"
+          :sala="sala.sala"
+          :fecha="sala.fecha"
+        ></evento
+      ></router-link>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.salas {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+</style>

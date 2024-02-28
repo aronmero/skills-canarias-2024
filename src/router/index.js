@@ -12,7 +12,15 @@ const routes = [
     path: "/salas",
     component: () => import("@/views/salas.vue"),
   },
+  {
+    path: "/salas/:id",
+    component: () => import("@/views/sala.vue"),
+  },
   { path: "/eventos", component: () => import("@/views/eventos.vue") },
+  {
+    path: "/eventos/:id",
+    component: () => import("@/views/evento.vue"),
+  },
   {
     path: "/reservas",
     component: () => import("@/views/reservas.vue"),
