@@ -17,7 +17,7 @@ const options = {
   },
 };
 
-const salaData = ref([]);
+const salaData = ref({});
 onMounted(async () => {
   fetch(`http://127.0.0.1:8000/api/reservas/${salaId.value}`, options)
     .then((response) => response.json())
@@ -31,14 +31,14 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class="text-white text-3xl font-bold underline z-10">Evento</h1>
+    <h1 class="text-white text-3xl font-bold underline z-10">Reserva</h1>
 
     <div class="salas">
-      <evento
-        :nombre="salaData.nombre"
-        :comensales="salaData.comensales"
+      <!--<evento
+        :evento="salaData.evento"
+        :sala="salaData.sala"
         :fecha="salaData.fecha"
-      ></evento>
+      ></evento>-->
     </div>
   </div>
 </template>

@@ -8,9 +8,10 @@ defineProps({
 <template>
 
   <div class="test">
-    <div>
+    <div class="display-flex">
       <h1 class="text-center">{{ evento.nombre }}</h1>
      <div>Sala: {{ sala.nombre }}</div>
+     <div>{{ fecha }}</div>
     </div>
 
   </div>

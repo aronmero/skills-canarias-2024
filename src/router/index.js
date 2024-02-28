@@ -24,6 +24,9 @@ const routes = [
   {
     path: "/reservas",
     component: () => import("@/views/reservas.vue"),
+  },{
+    path: "/reservas/:id",
+    component: () => import("@/views/reserva.vue"),
   },
 ];
 
