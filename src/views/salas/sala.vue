@@ -25,12 +25,12 @@ onMounted(async () => {
     .catch((err) => console.error(err));
 });
 import { redirectLogin } from "@/utils/utils";
-redirectLogin();
+
 </script>
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class=" text-3xl font-bold underline z-10">Sala</h1>
+    <h1 class=" text-3xl font-bold z-10">Sala</h1>
 
     <div class="salas">
       <sala

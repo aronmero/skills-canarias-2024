@@ -6,7 +6,7 @@ const store = useUsuarioStore();
 <template>
   <header>
     <div class="enlaces">
-      <router-link v-if="store.isActivo" to="/" class="link">Salas </router-link>
+      <router-link to="/" class="link">Salas </router-link>
       <router-link v-if="store.isActivo" to="/reservas" class="link">Reservas </router-link>
       <router-link v-if="store.isActivo" to="/eventos" class="link">Eventos </router-link>
       <router-link v-if="!store.isActivo" to="/login" class="link">Iniciar sesion </router-link>

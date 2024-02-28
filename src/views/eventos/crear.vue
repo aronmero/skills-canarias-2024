@@ -49,7 +49,7 @@ redirectLogin();
 
 <template>
   <div class="flex flex-col items-center gap-10">
-    <h1 class="text-3xl font-bold underline z-10">Crear Evento</h1>
+    <h1 class="text-3xl font-bold  z-10">Crear Evento</h1>
     <div class="login">
       <crear @submit="tryCreateEvent" :error="errorMsg" />
     </div>

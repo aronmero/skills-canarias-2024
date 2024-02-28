@@ -35,7 +35,7 @@ redirectLogin();
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class=" text-3xl font-bold underline z-10">Reserva</h1>
+    <h1 class=" text-3xl font-bold  z-10">Reserva</h1>
 
     <div class="salas">
       <!--<evento
