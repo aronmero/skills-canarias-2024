@@ -41,6 +41,7 @@ redirectLogin();
         :nombre="salaData.nombre"
         :comensales="salaData.comensales"
         :fecha="salaData.fecha"
+        :id="id"
       ></evento>
     </div>
   </div>
