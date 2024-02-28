@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class apiUsersController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->except('store');
+        $this->middleware('can:admin.usuario.show')->only('show');
+    }
     /**
      * Store a newly created resource in storage.
      */
