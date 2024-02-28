@@ -2,56 +2,64 @@
 import { useUsuarioStore } from "@/stores/usuario";
 import { ref, onMounted, computed } from "vue";
 
-import evento from "@/components/evento.vue";
+import crear from "@/components/crear/crearEvento.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
-const salaId = ref("");
 const store = useUsuarioStore();
 
-const { id } = router.currentRoute.value.params;
-salaId.value = id;
+const errorMsg = ref(null);
+const tryCreateEvent = async (userData) => {
+  if (userData.nombre && userData.comensales && userData.fecha) {
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "User-Agent": "insomnia/8.6.0",
+          Accept: "application/json",
+          Authorization: "Bearer " + store.data.token,
+        },
+        body: `{"nombre":"${userData.nombre}","comensales":"${userData.comensales}",
+        "fecha":"${userData.fecha}","usuario_id":${store.data.id}}`,
+      };
 
-const options = {
-  method: "GET",
-  headers: {
-    "User-Agent": "insomnia/8.6.0",
-    Accept: "application/json",
-    Authorization: "Bearer "+store.data.token,
-  },
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/eventos",
+        options
+      );
+      const data = await response.json();
+
+      console.log(data);
+
+      if (data.status) {
+        errorMsg.value = "";
+         router.push(`/eventos/${data.message}`);
+      } else {
+        errorMsg.value = data.message;
+      }
+    } catch (error) {
+      errorMsg.value = "Error";
+    }
+  }
 };
 
-const salaData = ref([]);
-onMounted(async () => {
-  fetch(`http://127.0.0.1:8000/api/eventos/${salaId.value}`, options)
-    .then((response) => response.json())
-    .then((response) => {
-      salaData.value = response.message;
-    })
-    .catch((err) => console.error(err));
-});
 import { redirectLogin } from "@/utils/utils";
 redirectLogin();
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
-    <h1 class=" text-3xl font-bold underline z-10">Evento</h1>
-
-    <div class="salas">
-      <evento
-        :nombre="salaData.nombre"
-        :comensales="salaData.comensales"
-        :fecha="salaData.fecha"
-      ></evento>
+  <div class="flex flex-col items-center gap-10">
+    <h1 class="text-3xl font-bold underline z-10">Crear Evento</h1>
+    <div class="login">
+      <crear @submit="tryCreateEvent" :error="errorMsg" />
     </div>
   </div>
 </template>
-
 <style scoped>
-.salas {
+.login {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

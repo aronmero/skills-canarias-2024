@@ -21,6 +21,7 @@ const routes = [
     component: () => import("@/views/salas/sala.vue"),
   },
   { path: "/eventos", component: () => import("@/views/eventos/eventos.vue") },
+  { path: "/eventos/new", component: () => import("@/views/eventos/crear.vue") },
   {
     path: "/eventos/:id",
     component: () => import("@/views/eventos/evento.vue"),

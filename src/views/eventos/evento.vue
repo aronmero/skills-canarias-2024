@@ -16,7 +16,7 @@ const options = {
   headers: {
     "User-Agent": "insomnia/8.6.0",
     Accept: "application/json",
-    Authorization: "Bearer "+store.data.token,
+    Authorization: "Bearer " + store.data.token,
   },
 };
 
@@ -35,8 +35,7 @@ redirectLogin();
 
 <template>
   <div class="flex flex-col items-center">
-    <h1 class=" text-3xl font-bold underline z-10">Evento</h1>
-
+    <h1 class="text-3xl font-bold underline z-10">Evento</h1>
     <div class="salas">
       <evento
         :nombre="salaData.nombre"

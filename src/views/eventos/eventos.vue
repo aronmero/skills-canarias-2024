@@ -33,8 +33,9 @@ redirectLogin();
 <template>
   <div class="flex flex-col items-center">
     <h1 class="text-3xl font-bold underline z-10">Eventos</h1>
-    <!--<div>Crear evento</div>-->
+    <router-link to="/eventos/new">Crear evento</router-link>
     <div class="salas">
+      
       <router-link
         v-for="sala in salas"
         :to="'eventos/' + sala.id"
