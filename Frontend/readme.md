@@ -1,5 +1,5 @@
 
-ESte proyecto utilza Vue con vite para iniciarlo primero instalar los paquetes necesarios:
+Este proyecto utilza Vue con vite para iniciarlo primero instalar los paquetes necesarios:
 
 ```bash
 npm i
